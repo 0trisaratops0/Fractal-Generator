@@ -1,52 +1,77 @@
-🌀 Fractal Generator
+# 🌀 **Fractal Generator**
 
-
-
-A simple and interactive fractal renderer written in C using the **MLX42** graphics library.  
-It supports Mandelbrot, Julia, and Burning Ship fractals with smooth coloring and real-time zoom and pan controls.
-
+A simple and interactive fractal renderer written in **C** using the **MLX42** graphics library.  
+It supports **Mandelbrot**, **Julia**, and **Burning Ship** fractals with smooth coloring, real-time zooming, panning, and palette cycling.
 
 ---
 
-🚀 Usage
+## ⚙️ **Requirements**
 
+- [MLX42](https://github.com/codam-coding-college/MLX42)
+- A compiler that supports C99 or later
+- macOS (with Metal) or Linux with GLFW & OpenGL installed
+
+---
+
+## 🚀 **Usage**
+
+First, compile the project:
+
+```bash
 make
+```
 
-# Mandelbrot or Burning Ship
+Then run one of the following:
+
+### 🟣 **Mandelbrot / Burning Ship**
+```bash
 ./fractal mandelbrot
 ./fractal burning
+```
 
-# Julia with required real & imaginary parts between -2.0 and 2.0
+Optional: provide a palette index (0–4)
+```bash
+./fractal mandelbrot 2
+```
+
+### 🔵 **Julia Set**
+Pass two floats as real and imaginary parts between `-2.0` and `2.0`:
+
+```bash
 ./fractal julia -0.7 0.27015
+```
 
-# (Optional) Provide a palette index (0–4) as 4th argument
-./fractal julia -0.7 0.27015 2
+Optional: pass a palette index as a fourth argument:
 
-
----
-
-🎮 Controls
-
-Key / Input	Action
-
-← ↑ ↓ →	Move view
-Mouse Scroll Up	Zoom in centered on mouse pointer
-Mouse Scroll Down	Zoom out centered on mouse pointer
-ENTER	Switch color palette
-SPACE	Cycle through Julia parameters
-ESC	Exit
-
-
+```bash
+./fractal julia -0.7 0.27015 3
+```
 
 ---
 
-🎨 Coloring
+## 🎮 **Controls**
 
-Fractals use smooth escape-time gradients with 5 built-in color palettes. You can:
+| Key / Input        | Action                                   |
+|--------------------|------------------------------------------|
+| `← ↑ ↓ →`          | Move/pan the view                        |
+| `Mouse Scroll`     | Zoom in/out centered on cursor           |
+| `Enter`            | Cycle through color palettes (0–4)       |
+| `Space`            | (Julia only) Cycle through preset values |
+| `Esc`              | Exit the application                     |
 
-Cycle palettes anytime with ENTER
+---
 
-Choose a starting palette by passing an optional palette index (0–4) when running Julia
+## 🎨 **Coloring**
 
-Edit or add palettes in init_palette() for custom colors
+This renderer uses **smooth escape-time gradients** with 5 built-in color palettes.
 
+You can:
+- Press `Enter` to cycle through palettes at runtime
+- Pass a palette index when launching the program
+- Modify or add palettes directly in `init_palette()` (see `color_utils.c`)
+
+---
+
+## 🖼️ **Screenshot**
+
+![Example of a Mandelbrot Render](assets/mandelbrot_example.jpg)
